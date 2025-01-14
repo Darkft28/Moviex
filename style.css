@@ -1,10 +1,13 @@
+/* Style global */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  color: #333;
 }
 
+/* Style du header */
 header {
   background-color: #333;
   color: white;
@@ -16,8 +19,39 @@ nav a {
   color: white;
   text-decoration: none;
   margin: 0 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Section d'introduction */
+#intro {
+  background-color: #ffffff;
+  padding: 30px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#intro h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+#intro p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Section des films */
 #movies {
   display: flex;
   flex-wrap: wrap;
@@ -33,6 +67,11 @@ nav a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
   text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover {
+  transform: scale(1.05);
 }
 
 .movie img {
@@ -44,6 +83,7 @@ nav a {
 .movie h2 {
   font-size: 18px;
   margin: 10px 0;
+  color: #333;
 }
 
 .movie p {
@@ -51,10 +91,64 @@ nav a {
   color: #555;
 }
 
-#movies .info {
-  text-align: left;
+/* Style du formulaire de contact */
+#contact {
+  background-color: #ffffff;
+  padding: 30px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+#contact h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#contact label {
+  font-size: 1em;
+  margin: 10px 0 5px;
+  text-align: left;
+  width: 100%;
+  max-width: 500px;
+}
+
+#contact input, #contact textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+#contact button {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#contact button:hover {
+  background-color: #444;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -64,4 +158,41 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* Bouton "Charger plus de films" */
+#load-more {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+#load-more:hover {
+  background-color: #444;
+}
+
+#load-more:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
