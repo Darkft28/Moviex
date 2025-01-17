@@ -31,62 +31,34 @@ function displayMovies(movies) {
         const movieElement = document.createElement("div");
         movieElement.classList.add("movie");
 
-        // Générer les étoiles
-        const starRating = createStarRating(movie.vote_average);
-
         movieElement.innerHTML = `
             <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="${movie.title}">
             <div class="info">
                 <h2>${movie.title}</h2>
                 <p><strong>Date de sortie :</strong> ${movie.release_date}</p>
-                <p><strong>Note moyenne :</strong> <span id="star-rating">${starRating}</span></p>
-                <p><strong>Description :</strong> ${movie.overview}</p>
             </div>
         `;
+
+        movieElement.addEventListener('click', () => {
+            window.location.href = `movie.html?id=${movie.id}`;
+        });
 
         moviesContainer.appendChild(movieElement);
     });
 }
 
-function createStarRating(voteAverage) {
-    const fullStars = Math.floor(voteAverage / 2);
-    const halfStar = voteAverage % 2 !== 0;
-    const starRating = [];
-
-    for (let i = 0; i < fullStars; i++) {
-        starRating.push('<span class="filled">★</span>');
-    }
-
-    if (halfStar) {
-        starRating.push('<span class="half">★</span>');
-    }
-
-    for (let i = fullStars + (halfStar ? 1 : 0); i < 5; i++) {
-        starRating.push('<span class="empty">☆</span>');
-    }
-
-    return starRating.join('');
-}
-
-// Gérer le bouton "Charger plus de films"
-document.getElementById("load-more").addEventListener("click", function () {
-    fetchMovies(currentPage);
-    this.disabled = true;
-    this.innerText = "Chargement...";
-
-    setTimeout(() => {
-        this.disabled = false;
-        this.innerText = "Charger plus de films";
-    }, 2000);
-});
+// Charger les films
+fetchMovies(currentPage);
 
 // Gérer la recherche
 document.getElementById("search-input").addEventListener("input", function () {
     const query = this.value.trim();
-    currentPage = 1; // Réinitialiser la page
-    document.getElementById("movies").innerHTML = ''; // Réinitialiser les films affichés
+    currentPage = 1;
+    document.getElementById("movies").innerHTML = '';
     fetchMovies(currentPage, query);
 });
 
-// Charger initialement les films
-fetchMovies(currentPage);
+// Bouton "Charger plus de films"
+document.getElementById("load-more").addEventListener("click", () => {
+    fetchMovies(currentPage);
+});
