@@ -1,21 +1,21 @@
-const API_KEY = 'ccde63e0';
+const API_KEY = '20bab2c97324603fd34a8ae304533fa1';
+const API_URL = 'https://api.themoviedb.org/3';
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original';
 
 let currentPage = 1;
-const MOVIE_IDS = ['tt3896198', 'tt1375666', 'tt0468569']; // Liste initiale des films
 
 async function fetchMovies(page = 1) {
-  // Simulation de récupération des films pour une page spécifique
-  const url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=movie&page=${page}`;
+  const url = `${API_URL}/movie/popular?api_key=${API_KEY}&language=fr&page=${page}`;
   
   try {
     const response = await fetch(url);
     const data = await response.json();
 
-    if (data.Response === "True") {
-      displayMovies(data.Search);
+    if (data.results && data.results.length > 0) {
+      displayMovies(data.results);
       currentPage++;
     } else {
-      console.error("No movies found:", data.Error);
+      console.error("No movies found or empty results");
     }
   } catch (error) {
     console.error("Error fetching movies:", error);
@@ -30,11 +30,11 @@ function displayMovies(movies) {
     movieElement.classList.add("movie");
 
     movieElement.innerHTML = `
-      <img src="${movie.Poster}" alt="${movie.Title}">
+      <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="${movie.title}">
       <div class="info">
-        <h2>${movie.Title}</h2>
-        <p><strong>Year:</strong> ${movie.Year}</p>
-        <p><strong>Type:</strong> ${movie.Type}</p>
+        <h2>${movie.title}</h2>
+        <p><strong>Date de sortie :</strong> ${movie.release_date}</p>
+        <p><strong>Note moyenne :</strong> ${movie.vote_average}</p>
       </div>
     `;
 
@@ -42,18 +42,17 @@ function displayMovies(movies) {
   });
 }
 
-// Fonction pour gérer l'événement du bouton "Charger plus de films"
-document.getElementById("load-more").addEventListener("click", function() {
+// Gérer le bouton "Charger plus de films"
+document.getElementById("load-more").addEventListener("click", function () {
   fetchMovies(currentPage);
-  this.disabled = true;  // Désactive le bouton lors du chargement
-  this.innerText = "Chargement..."; // Texte du bouton pendant le chargement
+  this.disabled = true;
+  this.innerText = "Chargement...";
   
-  // Réactive le bouton après un délai simulé
   setTimeout(() => {
     this.disabled = false;
     this.innerText = "Charger plus de films";
-  }, 2000); // 2 secondes d'attente avant de pouvoir cliquer à nouveau
+  }, 2000);
 });
 
-// Charger initialement les films lors du chargement de la page
+// Charger initialement les films
 fetchMovies(currentPage);
