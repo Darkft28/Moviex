@@ -51,6 +51,27 @@ nav a:hover {
   margin: 0 auto;
 }
 
+/* Section de recherche */
+#search-bar {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#search-input {
+  padding: 10px;
+  width: 80%;
+  max-width: 500px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #f4a261;
+}
+
 /* Section des films */
 #movies {
   display: flex;
@@ -89,6 +110,24 @@ nav a:hover {
 .movie p {
   font-size: 14px;
   color: #555;
+}
+
+/* Styles pour les étoiles */
+#star-rating {
+  font-size: 20px;
+  color: #ddd;
+}
+
+#star-rating .filled {
+  color: #f4a261; /* Couleur des étoiles pleines */
+}
+
+#star-rating .empty {
+  color: #ddd; /* Couleur des étoiles vides */
+}
+
+#star-rating .half {
+  color: #f4a261; /* Couleur des étoiles semi-pleines */
 }
 
 /* Style du formulaire de contact */
@@ -170,7 +209,6 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-
 
 /* Bouton "Charger plus de films" */
 #load-more {
