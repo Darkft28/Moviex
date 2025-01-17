@@ -32,7 +32,6 @@ function displayMovieDetails(movie) {
         <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="${movie.title}">
         <p><strong>Résumé :</strong> ${movie.overview}</p>
         <p><strong>Genre :</strong> ${movie.genres.map(genre => genre.name).join(', ')}</p>
-        <p><strong>Acteurs :</strong> (Données à ajouter si disponible)</p>
         <p><strong>Date de sortie :</strong> ${new Date(movie.release_date).toLocaleDateString('fr-FR')}</p>
         <p><strong>Note :</strong> ${movie.vote_average} / 10</p>
     `;
