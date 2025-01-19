@@ -65,14 +65,24 @@ function afficherEtoiles(note) {
     return etoiles.join('');
 }
 
-// Fonction de recherche de films
+// Fonction de recherche de films en temps réel
 function rechercherFilms() {
-    const inputRecherche = document.getElementById("search-input").value;
-    pageActuelle = 1;
+    const inputRecherche = document.getElementById("search-input").value.trim();
+    if (inputRecherche === "") {
+        // Si la recherche est vide, ne rien afficher
+        const conteneurFilms = document.getElementById("movies");
+        conteneurFilms.innerHTML = '';
+        return;
+    }
+    
+    pageActuelle = 1; // Réinitialise la page des résultats
     const conteneurFilms = document.getElementById("movies");
-    conteneurFilms.innerHTML = '';
-    recupererFilms(pageActuelle, inputRecherche);
+    conteneurFilms.innerHTML = ''; // Vide le conteneur des films avant de charger les nouveaux résultats
+    recupererFilms(pageActuelle, inputRecherche); // Récupère les films avec le terme de recherche
 }
+
+// Ajoute un écouteur d'événements pour l'événement 'input' (chaque modification dans le champ)
+document.getElementById('search-input').addEventListener('input', rechercherFilms);
 
 // Fonction pour charger plus de films
 document.getElementById('load-more').addEventListener('click', () => {
@@ -146,7 +156,7 @@ function afficherDetailsFilm(film) {
     `;
 }
 
-// Si la page actuelle est `details.html`, récupérer les détails du film
+
 if (document.getElementById("movie-details")) {
     recupererDetailsFilm();
 }

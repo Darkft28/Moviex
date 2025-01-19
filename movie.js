@@ -1,4 +1,4 @@
-// Fonction de bascule de thème pour movie.html
+// Fonction de bascule de thème
 function toggleTheme() {
     document.body.classList.toggle('dark');
     // Sauvegarde du thème dans localStorage
@@ -51,12 +51,16 @@ async function fetchMovieDetails(id) {
 
 function displayMovieDetails(movie) {
     const movieDetails = document.getElementById("movie-details");
+    const actors = movie.cast ? movie.cast.map(actor => actor.name).join(', ') : 'TMDB ne dispose pas de cette requête'; // Si les acteurs sont disponibles, on les affiche
+    const dvdReleaseDate = new Date(movie.release_date).toLocaleDateString('fr-FR');
+
     movieDetails.innerHTML = `
         <h1>${movie.title}</h1>
         <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="${movie.title}">
         <p><strong>Résumé :</strong> ${movie.overview}</p>
         <p><strong>Genre :</strong> ${movie.genres.map(genre => genre.name).join(', ')}</p>
-        <p><strong>Date de sortie :</strong> ${new Date(movie.release_date).toLocaleDateString('fr-FR')}</p>
+        <p><strong>Acteurs :</strong> ${actors}</p>
         <p><strong>Note :</strong> ${movie.vote_average} / 10</p>
+        <p><strong>Date de sortie en DVD :</strong> ${dvdReleaseDate}</p>
     `;
 }
