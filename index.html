@@ -12,7 +12,9 @@
             <a href="index.html">Accueil</a>
             <a href="#contact">Contact</a>
         </nav>
+        <img id="toggle-theme" src="BandW.png" alt="Icône Soleil et Lune">
     </header>
+    
 
     <main id="app">
         <section id="intro">
@@ -33,28 +35,26 @@
 
         <section id="contact">
             <h2>Contactez-Nous</h2>
-            <form id="contact-form">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="apikey" value="9fdbc500-0363-4f8e-b8a5-835d2d7220b4">
+        
                 <label for="name">Nom :</label>
                 <input type="text" id="name" name="name" required>
-
+        
                 <label for="email">Email :</label>
                 <input type="email" id="email" name="email" required>
-
+        
                 <label for="message">Message :</label>
                 <textarea id="message" name="message" required></textarea>
-
+        
                 <button type="submit">Envoyer</button>
             </form>
         </section>
+        
     </main>
 
     <footer>
         <p>&copy; 2025 Mon Cinéma - Tous droits réservés</p>
-        <p>Suivez-nous :
-            <a href="#" aria-label="Facebook">Facebook</a> |
-            <a href="#" aria-label="Twitter">Twitter</a> |
-            <a href="#" aria-label="Instagram">Instagram</a>
-        </p>
     </footer>
 
     <script src="script.js"></script>

@@ -11,10 +11,23 @@ body {
 header {
   background-color: #333;
   color: white;
-  padding: 10px 0;
+  padding: 25px 0;
   text-align: center;
+  position: relative;
 }
 
+/* CSS pour l'image de bascule */
+#toggle-theme {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Styles pour la navigation */
 nav a {
   color: white;
   text-decoration: none;
@@ -36,6 +49,7 @@ nav a:hover {
   margin: 20px 0;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333; /* Assure que le texte est toujours visible */
 }
 
 #intro h1 {
@@ -119,15 +133,15 @@ nav a:hover {
 }
 
 #star-rating .filled {
-  color: #f4a261; /* Couleur des étoiles pleines */
+  color: #f4a261;
 }
 
 #star-rating .empty {
-  color: #ddd; /* Couleur des étoiles vides */
+  color: #ddd;
 }
 
 #star-rating .half {
-  color: #f4a261; /* Couleur des étoiles semi-pleines */
+  color: #f4a261;
 }
 
 /* Style du formulaire de contact */
@@ -162,7 +176,8 @@ nav a:hover {
   max-width: 500px;
 }
 
-#contact input, #contact textarea {
+#contact input,
+#contact textarea {
   width: 100%;
   max-width: 500px;
   padding: 10px;
@@ -233,4 +248,75 @@ footer a:hover {
 #load-more:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* Mode sombre */
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+body.dark header {
+  background-color: #1f1f1f;
+}
+
+body.dark #movies .movie {
+  background-color: #333;
+}
+
+body.dark #search-input {
+  background-color: #444;
+  color: white;
+}
+
+body.dark footer {
+  background-color: #1f1f1f;
+}
+
+body.dark a {
+  color: #f4a261;
+}
+
+body.dark #intro {
+  background-color: #222;
+  color: #fff; /* Assure que le texte reste visible en mode sombre */
+}
+
+body.dark #intro p {
+  color: #bbb; /* Change la couleur du texte dans #intro en mode sombre */
+}
+
+body.dark .movie h2 {
+  color: #fff; /* Les titres des films doivent rester visibles en mode sombre */
+}
+
+/* Mode sombre pour le formulaire de contact */
+body.dark #contact {
+  background-color: #222;
+  color: #fff; /* Texte visible en mode sombre */
+}
+
+body.dark #contact h2 {
+  color: #fff; /* Couleur du titre du formulaire en mode sombre */
+}
+
+body.dark #contact input,
+body.dark #contact textarea {
+  background-color: #333; /* Couleur de fond des champs en mode sombre */
+  color: #fff; /* Texte blanc dans les champs */
+  border: 1px solid #555; /* Bordure plus sombre */
+}
+
+body.dark #contact input::placeholder,
+body.dark #contact textarea::placeholder {
+  color: #bbb; /* Couleur des placeholders en mode sombre */
+}
+
+body.dark #contact button {
+  background-color: #444; /* Bouton adapté au mode sombre */
+  color: #fff; /* Texte blanc sur le bouton */
+}
+
+body.dark #contact button:hover {
+  background-color: #555; /* Changement de couleur au survol en mode sombre */
 }

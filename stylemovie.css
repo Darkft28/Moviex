@@ -1,32 +1,51 @@
-/* Style global */
+/* Style global pour movie.html */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Header */
 header {
     background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+    color: white;
+    padding: 25px 0;
+    text-align: center; /* Centrer le texte */
+    position: relative;
 }
 
+/* Navigation */
 header nav {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centrer les liens */
     gap: 20px;
 }
 
 header nav a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    font-size: 16px;
+    margin: 0 15px; /* Espacement entre les liens */
+    font-size: 18px; /* Taille de la police plus grande */
+    text-transform: uppercase; /* Mettre les lettres en majuscules */
+    letter-spacing: 1px; /* Espacement entre les lettres */
 }
 
 header nav a:hover {
     text-decoration: underline;
+}
+
+/* Image de bascule du thème */
+#toggle-theme {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 /* Section des détails du film */
@@ -37,6 +56,7 @@ header nav a:hover {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .movie-details h1 {
@@ -92,4 +112,28 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Mode sombre */
+body.dark {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark header {
+    background-color: #1f1f1f;
+}
+
+body.dark .movie-details {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark .movie-details h1,
+body.dark .movie-details p {
+    color: #fff;
+}
+
+body.dark footer {
+    background-color: #1f1f1f;
 }
