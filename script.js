@@ -1,4 +1,6 @@
-const CLE_API = '20bab2c97324603fd34a8ae304533fa1'; // Clé API pour accéder au service
+
+// const CLE_API = '20bab2c97324603fd34a8ae304533fa1'; // Clé API pour accéder au service
+
 const URL_API = 'https://api.themoviedb.org/3'; // URL de base de l'API
 const URL_BASE_IMAGE = 'https://image.tmdb.org/t/p/original'; // URL de base pour les images
 
@@ -6,6 +8,7 @@ let pageActuelle = 1; // Numéro de la page actuelle des résultats
 
 // Fonction pour récupérer les films
 async function recupererFilms(page = 1, recherche = '') {
+
     const url = recherche 
         ? `${URL_API}/search/movie?api_key=${CLE_API}&language=fr&query=${recherche}&page=${page}`
         : `${URL_API}/movie/popular?api_key=${CLE_API}&language=fr&page=${page}`;

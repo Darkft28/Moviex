@@ -24,7 +24,6 @@ const themeButton = document.getElementById('toggle-theme');
 themeButton.addEventListener('click', toggleTheme);
 
 // Récupérer les détails du film
-const API_KEY = '20bab2c97324603fd34a8ae304533fa1';
 const API_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original';
 
@@ -40,7 +39,7 @@ if (movieId) {
 
 async function fetchMovieDetails(id) {
     try {
-        const response = await fetch(`${API_URL}/movie/${id}?api_key=${API_KEY}&language=fr`);
+        const response = await fetch(`${API_URL}/movie/${id}?api_key=${CLE_API}&language=fr`);
         const movie = await response.json();
         displayMovieDetails(movie);
     } catch (error) {
